@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent, IonInput, IonButton } from '@ionic/angular/standalone';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslatorService } from '../services/api/translator.service';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-translator',
@@ -17,6 +18,7 @@ export class TranslatorPage implements OnInit {
   userInput = new FormControl<string>('');
   result: string | null = null;
   private translatorService = inject(TranslatorService);
+  private storeService = inject(StoreService);
 
   //constructor(private translatorService: TranslatorService) { }
 
@@ -27,6 +29,17 @@ export class TranslatorPage implements OnInit {
     const input = this.userInput.value
     console.log('Translating:', input);
     // Translation logic would go here
-    this.result = await this.translatorService.translate(input || '');
+    if (!input || input.trim() === '') {
+      this.result = '';
+      return;
+    }
+    this.result = await this.translatorService.translate(input);
+    // store permanentrly using Preferences API
+    this.storeService.store({
+      uuid: crypto.randomUUID(),
+      originalText: input,
+      translatedText: this.result || '',
+      timestamp: Date.now()
+    });
   }
 }
