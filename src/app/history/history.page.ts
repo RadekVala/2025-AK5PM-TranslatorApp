@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent } from '@ionic/angular/standalone';
-import { StoreService } from '../services/store.service';
+import { StoreService } from '../services/firebase/store.service';
 
 @Component({
   selector: 'app-history',
@@ -21,10 +21,5 @@ export class HistoryPage implements OnInit {
 
   ngOnInit() {
     console.log('Angular component History initialized');
-  }
-
-  ionViewWillEnter() {
-    console.log('History ionViewWillEnter - loading history');
-    this.storeService.loadHistory();
   }
 }

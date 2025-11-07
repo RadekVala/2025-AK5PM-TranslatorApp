@@ -11,7 +11,7 @@
     </ion-toolbar>
   </ion-header>
 
-  @for (record of storeService.history; track record.uuid) {
+  @for (record of storeService.history$ | async; track record.uuid) {
     <ion-card>
       <ion-card-content>
         <strong>Original:</strong> {{ record.originalText }}<br />

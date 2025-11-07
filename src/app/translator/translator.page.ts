@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent, IonInput, IonButton } from '@ionic/angular/standalone';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslatorService } from '../services/api/translator.service';
-import { StoreService } from '../services/store.service';
+import { StoreService } from '../services/firebase/store.service';
 
 @Component({
   selector: 'app-translator',
