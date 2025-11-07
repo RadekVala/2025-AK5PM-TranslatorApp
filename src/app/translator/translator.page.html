@@ -10,4 +10,32 @@
       <ion-title size="large">Translator</ion-title>
     </ion-toolbar>
   </ion-header>
+
+   <ion-card>
+   <ion-card-content>
+    <ion-input
+        type="text"
+        fill="solid"
+        label="Text for translation"
+        labelPlacement="floating"
+        helperText="Input you phrase for translation..."
+        errorText="xxx"
+        [formControl]="userInput"
+        ></ion-input>
+   </ion-card-content>
+
+    <ion-button (click)="translateClicked()"
+    expand="block">Translate</ion-button>
+
+  </ion-card>
+
+  @if(result) {
+    <ion-card>
+      <ion-card-content>
+        Translated text: {{ result }}
+      </ion-card-content>
+    </ion-card>
+  }
+
+
 </ion-content>
