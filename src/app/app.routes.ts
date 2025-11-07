@@ -9,4 +9,8 @@ export const routes: Routes = [
     path: 'translator',
     loadComponent: () => import('./translator/translator.page').then( m => m.TranslatorPage)
   },
+  {
+    path: 'history',
+    loadComponent: () => import('./history/history.page').then( m => m.HistoryPage)
+  },
 ];
